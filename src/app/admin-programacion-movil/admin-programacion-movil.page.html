@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Móvil-ADMINN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="movilActual">
+    <ion-card-content>
+      <p id="fechaTexto">{{ movilActual.fechaTexto }}</p>
+      <ion-textarea rows="15" [(ngModel)]="movilActual.texto">
+      </ion-textarea>
+    </ion-card-content>
+    <ion-button expand="block" (click)="guardar()">
+      Guardar
+    </ion-button>
+  </ion-card>
+</ion-content>
+
+

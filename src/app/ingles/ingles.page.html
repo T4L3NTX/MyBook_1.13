@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Inglés</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="ingActual">
+    <ion-card-content>
+      <p id="fechaTexto">{{ ingActual.fechaTexto }}</p>
+      <ion-textarea rows="15" [(ngModel)]="ingActual.texto">
+      </ion-textarea>
+    </ion-card-content>
+    <ion-button expand="block" (click)="guardar()">
+      Guardar
+    </ion-button>
+  </ion-card>
+</ion-content>

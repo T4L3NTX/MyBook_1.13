@@ -1,0 +1,52 @@
+<ion-header [translucent]="true" class="Encabezado">
+  <ion-toolbar class="toolbar">
+    <ion-title class="title ion-text-center" style="font-family: 'Oswald', sans-serif;">
+      Registro
+    </ion-title>
+    <ion-button slot="start" class="btn-back">
+      <ion-back-button></ion-back-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content login" [fullscreen]="true" id="colores">
+  <div class="image-container" style="font-family: 'Oswald', sans-serif; text-align: center;">
+    <h2 class="welcome-text">Regístrate</h2>
+    <img class="logo" src="assets/LogoCat.png" alt="Logo" width="28%" height="20%">
+  </div>
+
+  <br><br>
+
+  <form [formGroup]="formularioRegistro" class="formulario-registro">
+    <ion-item class="input-item">
+      <ion-input class="input-usuario" formControlName="usuario" label="Crea tu Nombre de Usuario" labelPlacement="floating">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input class="input-clave" formControlName="contrasenna" label="Crea tu Clave" labelPlacement="floating" type="password">
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input class="input-documento" formControlName="rut" label="Rut" labelPlacement="floating">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input class="input-documento" formControlName="documento" label="Nro Documento" labelPlacement="floating">
+      </ion-input>
+    </ion-item>
+  </form>
+
+  <br><br>
+  chupalo
+  <ion-button class="btn-registrar" expand="block" color="medium" (click)="guardar()">
+    Registrar
+  </ion-button>
+  chupalo
+  chupalo
+</ion-content>
+
+

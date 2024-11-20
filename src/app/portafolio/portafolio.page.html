@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Portafolio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="portActual">
+    <ion-card-content>
+      <p id="fechaTexto">{{ portActual.fechaTexto }}</p>
+      <ion-textarea rows="15" [(ngModel)]="portActual.texto">
+      </ion-textarea>
+    </ion-card-content>
+    <ion-button expand="block" (click)="guardar()">
+      Guardar
+    </ion-button>
+  </ion-card>
+</ion-content>
+

@@ -1,0 +1,54 @@
+/* Estilos generales para la página de recuperación */
+.login-content {
+    --background: #d1d0d0; /* Color de fondo de la página */
+  }
+  
+  .image-container {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .logo {
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+    border: 2px solid #ddd; /* Borde opcional */
+    padding: 10px; /* Espaciado opcional alrededor de la imagen */
+    background-color: #fff; /* Fondo blanco opcional detrás de la imagen */
+  }
+  
+  .welcome-text {
+    color: #000000; /* Color del texto de bienvenida */
+  }
+  
+  .formulario-recuperacion {
+    margin: 16px;
+  }
+  
+  .input-item {
+    --border-radius: 10px; /* Bordes redondeados */
+    margin: 5px;
+  }
+  
+  .input-usuario,
+  .input-clave,
+  .input-documento {
+    --font-size: 16px; /* Tamaño de la fuente */
+    --border-radius: 10px; /* Bordes redondeados */
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    --border-width: 2px; /* Ancho del borde */
+  }
+  
+  .btn-recuperar {
+    --color: #ffffff; /* Color del texto */
+    --border-radius: 25px; /* Bordes redondeados */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del botón */
+    --padding-start: 20px; /* Espaciado interno (izquierda) */
+    --padding-end: 20px; /* Espaciado interno (derecha) */
+    --padding-top: 12px; /* Espaciado interno (arriba) */
+    --padding-bottom: 12px; /* Espaciado interno (abajo) */
+    font-family: 'Oswald', sans-serif; /* Fuente del botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+  }
+  

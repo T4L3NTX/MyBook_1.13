@@ -1,0 +1,42 @@
+<ion-header [translucent]="true" class="Encabezado">
+  <ion-toolbar class="toolbar">
+    <ion-title class="title ion-text-center" style="font-family: 'Oswald', sans-serif;">
+      Recuperación
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content login" [fullscreen]="true" id="colores">
+  <div class="image-container" style="font-family: 'Oswald', sans-serif; text-align: center;">
+    <h2 class="welcome-text">Actualiza tu contraseña</h2>
+    <img class="logo" src="assets/LogoCat.png" alt="Logo" width="28%" height="20%">
+  </div>
+
+  <br><br>
+
+  <form [formGroup]="formularioRecuperacion" class="formulario-recuperacion">
+    <ion-item class="input-item">
+      <ion-input class="input-usuario" formControlName="usuario" label="Usuario" labelPlacement="floating">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input class="input-documento" formControlName="documento" label="Nro Documento" labelPlacement="floating">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input class="input-clave" formControlName="contrasennaNueva" label="Nueva Clave" labelPlacement="floating" type="password">
+      </ion-input>
+    </ion-item>
+  </form>
+
+  <ion-button class="btn-recuperar" expand="block" color="medium" (click)="recuperar()">
+    Recuperar
+  </ion-button>
+</ion-content>
+
+<!--<ion-textarea class="input-usuario" formControlName="usuario" label="Ingrese Nombre de Usuario" labelPlacement="floating" fill="outline" placeholder="Enter text">
+</ion-textarea>-->
+<!--<ion-textarea class="input-clave" formControlName="contrasenna" label="Ingrese su contraseña" labelPlacement="floating" type="password" fill="outline" placeholder="Enter text">
+</ion-textarea>-->

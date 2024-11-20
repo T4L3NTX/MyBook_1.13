@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>inicioAdmin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center;" [fullscreen]="true">
+  <div  style="text-align: center; font-family:'Times New Roman';" class="image-container">
+    <img  src="assets/LogoCat.png" alt="" width="28%" height="20%">
+  </div>  
+  
+  <h1>My Notes</h1>
+ <ion-card style="text-align: center;">
+
+    <ion-item>
+      <ion-button [routerLink]="['/admin-arquitectura']">
+        Arquitectura
+      </ion-button>
+    </ion-item>
+
+    <ion-item >
+      <ion-button [routerLink]="['/admin-calidad-software']">
+        Calidad Software
+      </ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-button  [routerLink]="['/admin-estadistica']">
+        Estadisticas descriptiva
+      </ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-button  [routerLink]="['/admin-etica']">
+        Etica para el Trabajo
+      </ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-button [routerLink]="['/admin-ingles']">
+        Ingles Intermedio
+      </ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-button [routerLink]="['/admin-portafolio']">
+        Portafolio
+      </ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-button [routerLink]="['/admin-programacion-movil']">
+        Programacion Movil
+      </ion-button>
+    </ion-item>
+</ion-card>
+<ion-button color="medium" size="small"  [routerLink]="['/meet-admin']">
+  <ion-icon slot="end" name="heart"></ion-icon>Meet
+</ion-button>
+
+<ion-button color="medium" size="small">
+  <ion-icon slot="end" name="star"></ion-icon>Test
+</ion-button>
+<ion-button size="small" color="medium"  (click)="volverHome()">
+  <ion-icon slot="icon-only" ios="logo-apple" md="logo-apple"></ion-icon>
+  Cerrar sesion
+</ion-button>
+
+</ion-content>

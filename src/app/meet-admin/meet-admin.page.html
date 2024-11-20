@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>meetAdmin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <!-- Campo de texto editable -->
+      <ion-textarea rows="15" [(ngModel)]="textoActual"></ion-textarea>
+    </ion-card-content>
+    <ion-button expand="block" (click)="guardarTexto()">
+      Guardar
+    </ion-button>
+  </ion-card>
+</ion-content>

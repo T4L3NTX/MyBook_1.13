@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Ética-ADMIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="etActual">
+    <ion-card-content>
+      <p id="fechaTexto">{{ etActual.fechaTexto }}</p>
+      <ion-textarea rows="15" [(ngModel)]="etActual.texto"></ion-textarea>
+    </ion-card-content>
+    <ion-button expand="block" (click)="guardar()">
+      Guardar
+    </ion-button>
+  </ion-card>
+</ion-content>
+

@@ -1,0 +1,7 @@
+.image-container{
+    display: flex; /* Utiliza Flexbox para el contenedor */
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center; /* Centra la imagen verticalmente */
+    height: 100%; /* Da al contenedor toda la altura posible */
+    background-color: black;
+}

@@ -1,0 +1,52 @@
+<ion-header [translucent]="true" class="Encabezado">
+  <ion-toolbar class="toolbar">
+    <ion-title class="title ion-text-center" style="font-family: 'Times New Roman';">
+      MyBook
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #card class="animated-card" class="login-content login" [fullscreen]="true" id="colores">
+  <div class="image-container" style="font-family: 'Oswald', sans-serif; text-align: center;">
+    <h2 class="welcome-text">Bienvenido</h2>
+    <img class="logo" src="assets/LogoCat.png" alt="Logo" width="28%" height="20%">
+  </div>
+
+  <br><br>
+
+  <form [formGroup]="formularioLogin" class="formulario-login" >
+    <ion-textarea class="input-usuario" formControlName="usuario" label="Ingrese Nombre de Usuario" labelPlacement="floating" fill="outline" placeholder="Example@gmail.com">
+    </ion-textarea>
+
+    <br>
+
+    <ion-input  class="input-clave" formControlName="contrasenna" type="password" label="Contraseña">
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+    <p>¿Olvidaste tu Contraseña?</p>
+  </form>
+
+  <br>
+
+  <ion-button id="btn-ingresar" class="btn-ingresar" style="font-family: 'Oswald', sans-serif;" expand="block" color="medium" (click)="ingresar();" >
+    Ingresar
+  </ion-button>
+  
+  <ion-button  class="btn-registrar" style="font-family: 'Oswald', sans-serif;" expand="block" color="medium" [routerLink]="['/registro']">
+    Registrar
+  </ion-button>
+  
+  <br><br>
+  
+  <ion-button class="btn-recuperar" style="font-family: 'Oswald', sans-serif;" expand="block" color="medium" [routerLink]="['/recuperacion']">
+    Recuperar contraseña
+  </ion-button>
+
+   
+</ion-content>
+
+
+<!--<ion-textarea class="input-usuario" formControlName="usuario" label="Ingrese Nombre de Usuario" labelPlacement="floating" fill="outline" placeholder="Enter text">
+</ion-textarea>-->
+<!--<ion-textarea class="input-clave" formControlName="contrasenna" label="Ingrese su contraseña" labelPlacement="floating" type="password" fill="outline" placeholder="Enter text">
+</ion-textarea>-->

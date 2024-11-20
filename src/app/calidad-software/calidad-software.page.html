@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Calidad del Software</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Solo muestra el card si calActual está definido -->
+  <ion-card *ngIf="calActual">
+    <ion-card-content>
+      <!-- Muestra la fecha -->
+      <p id="fechaTexto">{{ calActual.fechaTexto }}</p>
+
+      <!-- Textarea para editar el texto, usa ngModel para vincular el dato con la propiedad -->
+      <ion-textarea rows="15" [(ngModel)]="calActual.texto">
+      </ion-textarea>
+    </ion-card-content>
+
+    <!-- Botón para guardar los cambios, llama a guardar() sin parámetros -->
+    <ion-button expand="block" (click)="guardar()">
+      Guardar
+    </ion-button>
+  </ion-card>
+</ion-content>
