@@ -6,7 +6,8 @@ import { map, Observable, retry } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000/user';  // Cambiamos de 'user/users' a 'user'
+  // usuario
+  private apiUrl = 'http://localhost:3000/user';  
   private apiUrlArq = 'http://localhost:3000/arqs';
   private apiUrlCalidad = 'http://localhost:3000/cali'; 
   private apiUrlEst = 'http://localhost:3000/Est';
@@ -14,7 +15,8 @@ export class ApiService {
   private apiUrlIng = 'http://localhost:3000/Ing';
   private apiUrlPort = 'http://localhost:3000/Port';
   private apiUrlMovil = 'http://localhost:3000/Movil';
-
+  //Admin
+  private apiUrlAdmin = 'http://localhost:3000/consejero';
   private apiUrlArqAd = 'http://localhost:3000/arqsAd';
   private apiUrlCalidadAd = 'http://localhost:3000/caliAd'; 
   private apiUrlEstAd = 'http://localhost:3000/EstAd';
@@ -22,7 +24,7 @@ export class ApiService {
   private apiUrlIngAd = 'http://localhost:3000/IngAd';
   private apiUrlPortAd = 'http://localhost:3000/PortAd';
   private apiUrlMovilAd = 'http://localhost:3000/MovilAd';
-
+  //Otros
   private apiUrlMeet = 'http://localhost:3000/Meet';
   private apiUrlNotas = 'http://localhost:3000/Notas';
   
@@ -46,8 +48,29 @@ export class ApiService {
       // Verificamos si el usuario y la contraseña codificada coinciden
   
       const user = users.find(u => u.username === username && u.pass === passwordBase64);
-  
+     
+      
       return user ? user : null;
+   
+  
+     })
+  
+    );
+  }
+
+  iniciarAdmin(name: string, password: string): Observable<any> {
+
+    return this.http.get<any[]>(this.apiUrlAdmin).pipe(
+  
+     map(users => {
+  
+      // Verificamos si el usuario y la contraseña codificada coinciden
+  
+      const admin = users.find(u => u.name === name && u.password === password);
+     
+      
+      return admin ? admin : null;
+   
   
      })
   
@@ -55,7 +78,7 @@ export class ApiService {
   }
 
 
-  recuperar(username: string, nroDocumento: string): Observable<any> {
+  recuperar(username: string, nroDocumento: string ): Observable<any> {
 
     return this.http.get<any[]>(this.apiUrl).pipe(
   
@@ -64,6 +87,7 @@ export class ApiService {
       // Verificamos si el usuario y la contraseña codificada coinciden
   
       const user = users.find(u => u.username === username && u.nroDocumento === nroDocumento);
+      
   
       return user ? user : null;
   
@@ -78,7 +102,7 @@ export class ApiService {
   }
 
 
-//cuadernos...................................................................
+//cuadernos usuario...................................................................
   
   //Arquitectura-----
    
@@ -140,6 +164,7 @@ obtenerMovil(): Observable<any[]> {
   return this.http.get<any[]>(this.apiUrlMovil);
 }
 
+//cuadernos Admin...................................................................
 
  //Arquitectura-----
    
@@ -201,6 +226,8 @@ getMovil(): Observable<any[]> {
 return this.http.get<any[]>(this.apiUrlMovilAd);
 }
 
+
+//otros...................................................................
 
 //Meet
 guardarMuroInfo(data:any):Observable<any>{
