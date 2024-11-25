@@ -1,0 +1,10 @@
+{
+  "appId": "com.example.app",
+  "appName": "MyBook_1.12",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
