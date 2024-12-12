@@ -5,6 +5,7 @@
       "username": "ADMIN",
       "pass": "NjY2OTExMzk=",
       "rut": "20492799-5",
+<<<<<<< HEAD
       "nroDocumento": "123456789",
       "rol": "consejero"
     }
@@ -18,6 +19,32 @@
       "nroDocumento": "123.456.789"
     }
   ],
+=======
+      "nroDocumento": "123456789"
+    },
+    {
+      "id": "1727827835259",
+      "username": "pablito",
+      "pass": "MTIzNDU2Nzg=",
+      "rut": "21098082-2",
+      "nroDocumento": "123456789"
+    },
+    {
+      "id": "1727827957138",
+      "username": "neuken",
+      "pass": "cGFibGl0bzEyMzQ=",
+      "rut": "21049584-3",
+      "nroDocumento": "1111111111111"
+    },
+    {
+      "id": 1732510516157,
+      "username": "Naiko",
+      "pass": "bmFpa28xMjM0NQ==",
+      "rut": "21.111.112-3",
+      "nroDocumento": "892034499"
+    }
+  ],
+>>>>>>> c41f6c3bf85e0a60726b458f92cdc574941fdd55
   "arqs": [],
   "cali": [],
   "Est": [],
