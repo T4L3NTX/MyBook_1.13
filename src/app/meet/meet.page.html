@@ -7,8 +7,14 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-content>
-      <!-- Mostrar el texto obtenido -->
-      <p>{{ textoActual }}</p>
+      <ion-list>
+        <ion-item *ngFor="let meet of meet">
+          <ion-label>
+            <h2>{{ meet.tema }}</h2>
+            <p>Descripcion: {{ meet.descripcion }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
 </ion-content>

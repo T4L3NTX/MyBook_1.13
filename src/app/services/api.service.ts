@@ -1,246 +1,214 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000/user';  // Cambiamos de 'user/users' a 'user'
-  private apiUrlArq = 'http://localhost:3000/arqs';
-  private apiUrlCalidad = 'http://localhost:3000/cali'; 
-  private apiUrlEst = 'http://localhost:3000/Est';
-  private apiUrlEti = 'http://localhost:3000/Eti';
-  private apiUrlIng = 'http://localhost:3000/Ing';
-  private apiUrlPort = 'http://localhost:3000/Port';
-  private apiUrlMovil = 'http://localhost:3000/Movil';
+  private apiUrlAdmin = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/consejero';
+  private apiUrl = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/user';  
+  private apiUrlArq = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/arqs';
+  private apiUrlCalidad = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/cali'; 
+  private apiUrlEst = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/Est';
+  private apiUrlEti = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/Eti';
+  private apiUrlIng = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/Ing';
+  private apiUrlPort = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/Port';
+  private apiUrlMovil = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/Movil';
 
-  private apiUrlArqAd = 'http://localhost:3000/arqsAd';
-  private apiUrlCalidadAd = 'http://localhost:3000/caliAd'; 
-  private apiUrlEstAd = 'http://localhost:3000/EstAd';
-  private apiUrlEtiAd = 'http://localhost:3000/EtiAd';
-  private apiUrlIngAd = 'http://localhost:3000/IngAd';
-  private apiUrlPortAd = 'http://localhost:3000/PortAd';
-  private apiUrlMovilAd = 'http://localhost:3000/MovilAd';
+  private apiUrlArqAd = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/arqsAd';
+  private apiUrlCalidadAd = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/caliAd'; 
+  private apiUrlEstAd = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/EstAd';
+  private apiUrlEtiAd = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/EtiAd';
+  private apiUrlIngAd = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/IngAd';
+  private apiUrlPortAd = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/PortAd';
+  private apiUrlMovilAd = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/MovilAd';
 
-  private apiUrlMeet = 'http://localhost:3000/Meet';
-  private apiUrlNotas = 'http://localhost:3000/Notas';
-  
+  private apiUrlMeet = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/Meet';
+  private apiUrlNotas = 'https://7f2ce03f-aa1f-4d70-a253-7f4aad09527c-00-3rtmjny4m1nkb.kirk.replit.dev/Notas';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 
+      "Content-Type": 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    })
+  };
 
   constructor(private http: HttpClient) { }
-
-
 
 //Usuarios....................................................................
 
   registrar(data: any): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+    return this.http.post(this.apiUrl, data, { headers: this.httpOptions.headers });
   }
   
   iniciar(username: string, passwordBase64: string): Observable<any> {
-
-    return this.http.get<any[]>(this.apiUrl).pipe(
-  
-     map(users => {
-  
-      // Verificamos si el usuario y la contraseña codificada coinciden
-  
-      const user = users.find(u => u.username === username && u.pass === passwordBase64);
-  
-      return user ? user : null;
-  
-     })
-  
+    return this.http.get<any[]>(this.apiUrl, { headers: this.httpOptions.headers }).pipe(
+      map(users => {
+        const user = users.find(u => u.username === username && u.pass === passwordBase64);
+        return user ? user : null;
+      })
     );
   }
 
+  iniciarAdmin(username: string, passwordBase64: string): Observable<any> {
+    return this.http.get<any[]>(this.apiUrlAdmin, { headers: this.httpOptions.headers }).pipe(
+      map(consejero => {
+        const admin = consejero.find(u => u.username === username && u.pass === passwordBase64);
+        return admin ? admin : null;
+      })
+    );
+  }
 
   recuperar(username: string, nroDocumento: string): Observable<any> {
-
-    return this.http.get<any[]>(this.apiUrl).pipe(
-  
-     map(users => {
-  
-      // Verificamos si el usuario y la contraseña codificada coinciden
-  
-      const user = users.find(u => u.username === username && u.nroDocumento === nroDocumento);
-  
-      return user ? user : null;
-  
-     })
-  
+    return this.http.get<any[]>(this.apiUrl, { headers: this.httpOptions.headers }).pipe(
+      map(users => {
+        const user = users.find(u => u.username === username && u.nroDocumento === nroDocumento);
+        return user ? user : null;
+      })
     );
   }
 
-  actualizarContrasenna(userId: number, nuevaContrasenna: string): Observable<any> {
-    const url = `${this.apiUrl}/${userId}`;  // Usamos el id del usuario para actualizar su registro
-    return this.http.patch(url, { pass: nuevaContrasenna });
+  actualizarContrasenna(id:number, nuevaContrasenna: string): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.patch(url, { pass: nuevaContrasenna }, { headers: this.httpOptions.headers });
   }
-
 
 //cuadernos...................................................................
   
-  //Arquitectura-----
-   
   guardarArq(data: any): Observable<any> {
-    return this.http.post(this.apiUrlArq, data);
+    return this.http.post(this.apiUrlArq, data, { headers: this.httpOptions.headers });
   }
   obtenerArqs(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlArq);
+    return this.http.get<any[]>(this.apiUrlArq, { headers: this.httpOptions.headers });
   }
-  //Calidad Software-----
 
+  // Calidades Software
   guardarCalidad(data: any): Observable<any> {
-    return this.http.post(this.apiUrlCalidad, data);
+    return this.http.post(this.apiUrlCalidad, data, { headers: this.httpOptions.headers });
   }
   obtenerCalidad(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlCalidad);
+    return this.http.get<any[]>(this.apiUrlCalidad, { headers: this.httpOptions.headers });
   }
-  //Estadistica-----
 
+  // Estadísticas
   guardarEstc(data: any): Observable<any> {
-    return this.http.post(this.apiUrlEst, data);
+    return this.http.post(this.apiUrlEst, data, { headers: this.httpOptions.headers });
   }
   obtenerEstc(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlEst);
+    return this.http.get<any[]>(this.apiUrlEst, { headers: this.httpOptions.headers });
   }
-  //Etica-----
 
+  // Ética
   guardarEtic(data: any): Observable<any> {
-    return this.http.post(this.apiUrlEti, data);
+    return this.http.post(this.apiUrlEti, data, { headers: this.httpOptions.headers });
   }
   obtenerEtic(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlEti);
+    return this.http.get<any[]>(this.apiUrlEti, { headers: this.httpOptions.headers });
   }
-  //Ingles-----
 
+  // Inglés
   guardarIngl(data: any): Observable<any> {
-    return this.http.post(this.apiUrlIng, data);
+    return this.http.post(this.apiUrlIng, data, { headers: this.httpOptions.headers });
   }
 
   obtenerIngl(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlIng);
+    return this.http.get<any[]>(this.apiUrlIng, { headers: this.httpOptions.headers });
   }
- //portafolio-----
 
- guardarPortafolio(data: any): Observable<any> {
-  return this.http.post(this.apiUrlPort, data);
-}
+  // Portafolio
+  guardarPortafolio(data: any): Observable<any> {
+    return this.http.post(this.apiUrlPort, data, { headers: this.httpOptions.headers });
+  }
+  obtenerPortafolio(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlPort, { headers: this.httpOptions.headers });
+  }
 
-obtenerPortafolio(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlPort);
-}
-//Movil-----
+  // Movil
+  guardarMovil(data: any): Observable<any> {
+    return this.http.post(this.apiUrlMovil, data, { headers: this.httpOptions.headers });
+  }
 
-guardarMovil(data: any): Observable<any> {
-  return this.http.post(this.apiUrlMovil, data);
-}
+  obtenerMovil(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlMovil, { headers: this.httpOptions.headers });
+  }
 
-obtenerMovil(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlMovil);
-}
+//Arquitectura (Admin)-------------------------------------
 
+  postArq(data: any): Observable<any> {
+    return this.http.post(this.apiUrlArqAd, data, { headers: this.httpOptions.headers });
+  }
+  getArqs(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlArqAd, { headers: this.httpOptions.headers });
+  }
 
- //Arquitectura-----
-   
- postArq(data: any): Observable<any> {
-  return this.http.post(this.apiUrlArqAd, data);
-}
-getArqs(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlArqAd);
-}
-//Calidad Software-----
+  // Calidades Software (Admin)
+  postCalidad(data: any): Observable<any> {
+    return this.http.post(this.apiUrlCalidadAd, data, { headers: this.httpOptions.headers });
+  }
+  getCalidad(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlCalidadAd, { headers: this.httpOptions.headers });
+  }
 
-postCalidad(data: any): Observable<any> {
-  return this.http.post(this.apiUrlCalidadAd, data);
-}
-getCalidad(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlCalidadAd);
-}
-//Estadistica-----
+  // Estadísticas (Admin)
+  postEstc(data: any): Observable<any> {
+    return this.http.post(this.apiUrlEstAd, data, { headers: this.httpOptions.headers });
+  }
+  getEstc(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlEstAd, { headers: this.httpOptions.headers });
+  }
 
-postEstc(data: any): Observable<any> {
-  return this.http.post(this.apiUrlEstAd, data);
-}
-getEstc(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlEstAd);
-}
-//Etica-----
+  // Ética (Admin)
+  postEtic(data: any): Observable<any> {
+    return this.http.post(this.apiUrlEtiAd, data, { headers: this.httpOptions.headers });
+  }
+  getEtic(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlEtiAd, { headers: this.httpOptions.headers });
+  }
 
-postEtic(data: any): Observable<any> {
-  return this.http.post(this.apiUrlEtiAd, data);
-}
-getEtic(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlEtiAd);
-}
-//Ingles-----
+  // Inglés (Admin)
+  postIngl(data: any): Observable<any> {
+    return this.http.post(this.apiUrlIngAd, data, { headers: this.httpOptions.headers });
+  }
 
-postIngl(data: any): Observable<any> {
-  return this.http.post(this.apiUrlIngAd, data);
-}
+  getrIngl(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlIngAd, { headers: this.httpOptions.headers });
+  }
 
-getrIngl(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlIngAd);
-}
-//portafolio-----
+  // Portafolio (Admin)
+  postPortafolio(data: any): Observable<any> {
+    return this.http.post(this.apiUrlPortAd, data, { headers: this.httpOptions.headers });
+  }
 
-postPortafolio(data: any): Observable<any> {
-return this.http.post(this.apiUrlPortAd, data);
-}
+  getPortafolio(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlPortAd, { headers: this.httpOptions.headers });
+  }
 
-getPortafolio(): Observable<any[]> {
-return this.http.get<any[]>(this.apiUrlPortAd);
-}
-//Movil-----
+  // Movil (Admin)
+  postMovil(data: any): Observable<any> {
+    return this.http.post(this.apiUrlMovilAd, data, { headers: this.httpOptions.headers });
+  }
 
-postMovil(data: any): Observable<any> {
-return this.http.post(this.apiUrlMovilAd, data);
-}
-
-getMovil(): Observable<any[]> {
-return this.http.get<any[]>(this.apiUrlMovilAd);
-}
-
+  getMovil(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlMovilAd, { headers: this.httpOptions.headers });
+  }
 
 //Meet
-guardarMuroInfo(data:any):Observable<any>{
-  return this.http.post(this.apiUrlMeet,data)
+cargarMeet(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrlMeet, { headers: this.httpOptions.headers });
+}
+guardarMeet(data: any): Observable<any> {
+  return this.http.post(this.apiUrlMeet, data, { headers: this.httpOptions.headers });
 }
 
-obtenerMeetInfo(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrlMeet);
 
-}
 //Notas
-
-cargarNota(): Observable<any[]>{
-  return this.http.get<any[]>(this.apiUrlNotas);
-}
-guardarNota(data:any):Observable<any>{
-  return this.http.post(this.apiUrlNotas,data)
+cargarNota(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrlNotas, { headers: this.httpOptions.headers });
 }
 
-  
-  
-  
+guardarNota(data: any): Observable<any> {
+  return this.http.post(this.apiUrlNotas, data, { headers: this.httpOptions.headers });
+}
 
-   }
-
-
-
-
-
-  //iniciar(username: string, passwordBase64: string): Observable<any> {
-    //const params = new HttpParams()
-      //.set('username', username)
-      //.set('pass', passwordBase64);  // Asegúrate de que los campos coincidan con los del JSON
-
-    //return this.http.get<any[]>(this.apiUrl, { params }).pipe(
-      //retry(3)  // Reintentamos la solicitud en caso de fallo
-    //);
-  //}
-  
-  
-
-
-
+}

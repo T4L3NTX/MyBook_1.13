@@ -53,23 +53,50 @@ export class LoginPage implements OnInit {
     this.apiService.iniciar(f.usuario, f.contrasenna).subscribe(async (user) => {
       if (user) {
         // Si las credenciales son correctas, redirigimos
-        if (f.usuario == "ADMIN" && f.contrasenna == "NjY2OTExMzk=") {
-          localStorage.setItem('ingresado','true');
-          this.navCtrl.navigateRoot('inicio-admin');
-        }else{
+       
         localStorage.setItem('ingresado','true');
         this.navCtrl.navigateRoot('inicio');
-        }
-      } else {
-        // Si las credenciales no son válidas, mostramos alerta
-        const alert = await this.alertController.create({
-          header: 'Error',
-          message: 'Credenciales incorrectas',
-          buttons: ['OK']
-        });
-        await alert.present();
+        
       }
     });
+      if (f.usuario == "ADMIN" && f.contrasenna == "NjY2OTExMzk=") {
+          this.apiService.iniciarAdmin(f.usuario, f.contrasenna).subscribe(async (admin) => {
+
+            if(admin){
+              localStorage.setItem('ingresado','true');
+              this.navCtrl.navigateRoot('inicio-admin');
+            }else {
+              // Si las credenciales no son válidas, mostramos alerta
+              const alert = await this.alertController.create({
+                header: 'Error',
+                message: 'Credenciales incorrectas',
+                buttons: ['OK']
+              });
+              await alert.present();
+            }
+
+          });
+      }else{
+        this.apiService.iniciar(f.usuario, f.contrasenna).subscribe(async (user) => {
+        if (user) {
+          // Si las credenciales son correctas, redirigimos
+         
+          localStorage.setItem('ingresado','true');
+          this.navCtrl.navigateRoot('inicio');
+          
+        }else {
+          // Si las credenciales no son válidas, mostramos alerta
+          const alert = await this.alertController.create({
+            header: 'Error',
+            message: 'Credenciales incorrectas',
+            buttons: ['OK']
+          });
+          await alert.present();
+        }
+      });
+      
+    }
+    
   }
   
 }

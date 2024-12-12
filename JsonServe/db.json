@@ -1,70 +1,37 @@
 {
-  "user": [
+  "consejero": [
     {
       "id": "1",
       "username": "ADMIN",
       "pass": "NjY2OTExMzk=",
       "rut": "20492799-5",
-      "nroDocumento": "123456789"
-    },
-    {
-      "id": "1727827835259",
-      "username": "pablito",
-      "pass": "MTIzNDU2Nzg=",
-      "rut": "21098082-2",
-      "nroDocumento": "123456789"
-    },
-    {
-      "id": "1727827957138",
-      "username": "neuken",
-      "pass": "cGFibGl0bzEyMzQ=",
-      "rut": "21049584-3",
-      "nroDocumento": "1111111111111"
+      "nroDocumento": "123456789",
+      "rol": "consejero"
     }
   ],
-  "arqs": [
+  "user": [
+    {
+      "id": 1733875105464,
+      "username": "shang",
+      "pass": "aG9sYW11bmRv",
+      "rut": "20.492.799.5",
+      "nroDocumento": "123.456.789"
+    }
   ],
-  "cali": [
-  ],
-  "Est": [
-
-  ],
-  "Eti": [
-
-  ],
-  "Ing": [
-
-  ],
-  "Port": [
-
-  ],
-  "Movil": [
-
-  ],
-  
-  "arqsAd": [
-  ],
-  "caliAd": [
-  ],
-  "EstAd": [
-
-  ],
-  "EtiAd": [
-
-  ],
-  "IngAd": [
-
-  ],
-  "PortAd": [
-
-  ],
-  "MovilAd": [
-
-  ],
-  "Meet": [
-
-  ],
-  "Notas": [
-
-  ]
+  "arqs": [],
+  "cali": [],
+  "Est": [],
+  "Eti": [],
+  "Ing": [],
+  "Port": [],
+  "Movil": [],
+  "arqsAd": [],
+  "caliAd": [],
+  "EstAd": [],
+  "EtiAd": [],
+  "IngAd": [],
+  "PortAd": [],
+  "MovilAd": [],
+  "Meet": [],
+  "Notas": []
 }

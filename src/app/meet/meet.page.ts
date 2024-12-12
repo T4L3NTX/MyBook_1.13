@@ -8,20 +8,21 @@ import { ApiService } from '../services/api.service'; // Importa el servicio de 
 })
 export class MeetPage implements OnInit {
 
-  textoActual: string = ''; // Variable para almacenar el texto actual
+  meet: Array<{ tema: string, descripcion: string }> = []; // Arreglo para almacenar las notas
 
-  constructor(private apiService: ApiService) {} // Inyecta el ApiService
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.cargarTexto(); // Cargar el texto al inicializar la página
+    this.cargarMeet();
   }
 
-  // Método para obtener el texto desde la API
-  cargarTexto() {
-    this.apiService.obtenerMeetInfo().subscribe((data: any[]) => {
-      this.textoActual = data.length ? data[0].texto : 'No hay texto disponible'; // Asigna el texto si existe
+  // Método para cargar el texto desde la API
+  cargarMeet() {
+    this.apiService.cargarMeet().subscribe(data => {
+      this.meet = data || []; // Asignar los datos obtenidos o un array vacío si no hay datos
     });
   }
+
 }
 
 

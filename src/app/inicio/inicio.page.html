@@ -5,61 +5,72 @@
 </ion-header>
 
 <ion-content style="text-align: center;" [fullscreen]="true">
-  <div  style="text-align: center; font-family:'Times New Roman';" class="image-container">
-    <img  src="assets/LogoCat.png" alt="" width="28%" height="20%">
-  </div>  
-  
-  <h1>My Notes</h1>
- <ion-card style="text-align: center;">
+  <div style="text-align: center; font-family:'Times New Roman';" class="image-container">
+    <!-- Mostrar la imagen capturada solo si la variable capturedImage no es null -->
+    <img *ngIf="capturedImage" [src]="capturedImage" alt="Imagen capturada" width="28%" height="20%">
+  </div>
 
+  <h1>My Notes</h1>
+  <ion-card style="text-align: center;">
     <ion-item style="display: flex; justify-content: center; align-items: center; height: 100%;">
-      <ion-button [routerLink]="['/arquitectura']" >
+      <ion-button [routerLink]="['/arquitectura']">
         Arquitectura
       </ion-button>
     </ion-item>
 
-    <ion-item >
+    <ion-item>
       <ion-button [routerLink]="['/calidad-software']">
         Calidad Software
       </ion-button>
     </ion-item>
-    <ion-item >
-      <ion-button  [routerLink]="['/estadistica']">
-        Estadisticas descriptiva
+
+    <ion-item>
+      <ion-button [routerLink]="['/estadistica']">
+        Estadísticas descriptivas
       </ion-button>
     </ion-item>
-    <ion-item >
+
+    <ion-item>
       <ion-button [routerLink]="['/etica']">
-        Etica para el Trabajo
+        Ética para el Trabajo
       </ion-button>
     </ion-item>
-    <ion-item >
-      <ion-button [routerLink]="['/ingles']" >
-        Ingles Intermedio
+
+    <ion-item>
+      <ion-button [routerLink]="['/ingles']">
+        Inglés Intermedio
       </ion-button>
     </ion-item>
-    <ion-item >
-      <ion-button  [routerLink]="['/portafolio']">
+
+    <ion-item>
+      <ion-button [routerLink]="['/portafolio']">
         Portafolio
       </ion-button>
     </ion-item>
-    <ion-item >
-      <ion-button  [routerLink]="['/movil']">
-        Programacion Movil
+
+    <ion-item>
+      <ion-button [routerLink]="['/movil']">
+        Programación Móvil
       </ion-button>
     </ion-item>
-</ion-card>
-<ion-button color="medium" size="small" [routerLink]="['/meet']">
-  <ion-icon slot="end" name="heart"></ion-icon>Meet
-</ion-button>
+  </ion-card>
 
-<ion-button color="medium" size="small">
-  <ion-icon slot="end" name="star"></ion-icon>Test
-</ion-button>
-<ion-button size="small" color="medium"   (click)="volverHome();">
-  <ion-icon slot="icon-only" ios="logo-apple" md="logo-apple"></ion-icon>
-  Cerrar sesion
-</ion-button>
+  <!-- Botones adicionales -->
+  <ion-button color="medium" size="small" [routerLink]="['/meet']">
+    <ion-icon slot="end" name="heart"></ion-icon>Meet
+  </ion-button>
 
+  <ion-button color="medium" size="small" [routerLink]="['/nota']">
+    <ion-icon slot="end" name="star"></ion-icon>Test
+  </ion-button>
+
+  <ion-button size="small" color="medium" (click)="volverHome();">
+    <ion-icon slot="icon-only" ios="logo-apple" md="logo-apple"></ion-icon>
+    Cerrar sesión
+  </ion-button>
+
+  <!-- Botón para capturar la imagen -->
+  <ion-button color="primary" (click)="takePicture()">
+    <ion-icon slot="start" name="camera"></ion-icon> Tomar Foto
+  </ion-button>
 </ion-content>
-

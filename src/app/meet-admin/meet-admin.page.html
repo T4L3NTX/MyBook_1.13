@@ -7,11 +7,31 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-content>
-      <!-- Campo de texto editable -->
-      <ion-textarea rows="15" [(ngModel)]="textoActual"></ion-textarea>
+      <!-- Campo para ingresar la asignatura -->
+      <ion-item>
+        <ion-label position="floating">Tema</ion-label>
+        <ion-input [(ngModel)]="tema"></ion-input>
+      </ion-item>
+      
+      <!-- Campo para ingresar la nota -->
+      <ion-item>
+        <ion-label position="floating">Descripcion</ion-label>
+        <ion-input [(ngModel)]="descripcion"></ion-input>
+      </ion-item>
+
+      <!-- Botón para guardar la nota -->
+      <ion-button expand="block" (click)="guardarTexto()">
+        aceptar reunion
+      </ion-button>
     </ion-card-content>
-    <ion-button expand="block" (click)="guardarTexto()">
-      Guardar
-    </ion-button>
   </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let meet of meet">
+      <ion-label>
+        <h2>{{ meet.tema }}</h2>
+        <p>{{ meet.descripcion }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
